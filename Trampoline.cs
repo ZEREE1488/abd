@@ -1,12 +1,16 @@
 using System.Collections;
-
 using System.Collections.Generic;
-using UnityEngine;public class Teleport : MonoBehaviour
+using UnityEngine;
+public class Trampoline : MonoBehaviour
 {
- public Transform teleportPoint;
  void OnTriggerEnter(Collider other)
  {
 
- other.transform.position = teleportPoint.position;
+ other.GetComponent<Jump>().jumpStrength = 10;
+ }
+ void OnTriggerExit(Collider other)
+ {
+ //Уменьшение силы прыжка
+ other.GetComponent<Jump>().jumpStrength = 2;
  }
 }
